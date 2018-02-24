@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Contact Card</title>
+    <link rel="stylesheet" href="contactcard.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+    $(document).ready(function(){
+
+      $("form").submit(function(){
+				var first = $("#first").val();
+				var last = $("#last").val();
+				var desc = $("#desc").val();
+
+        var html = `<div class = 'card'>
+            <p>${first} ${last}</p>
+            <p class = 'back'>${desc}</p>
+          </div>`
+
+				$("#contacts").append(html);
+
+				$("#first").val("");
+				$("#last").val("");
+				$("#desc").val("");
+        // reset values so user can retype additional info
+				return false;
+			});
+
+
+    $(document).on('click', '.card', function(){
+    				$(this).children().toggle();
+    			});
+
+    });
+    </script>
+    </head>
+
+
+    <body>
+    <div id = "container">
+		    <div id ="form">
+			       <form>
+              <fieldset>
+                 <legend>Contact Form</legend>
+          				<label> First Name:<input type ="text" name="first" id ="first"></label>
+                  <br>
+          				<label>Last Name:<input type ="text" name="last" id ="last"></label>
+                  <br>
+          				<label>Description:<textarea id="desc"></textarea></label>
+                  <br>
+          				<button>Add User</button>
+              </fieldset>
+			        </form>
+		     </div>
+	       <div id ="contacts">
+	       </div>
+	</div>
+
+    </body>
+</html>
